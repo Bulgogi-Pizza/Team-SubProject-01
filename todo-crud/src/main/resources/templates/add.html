@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Add New To-Do</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+  <h1>Add New To-Do</h1>
+  <form th:action="@{/MVC/save}" th:object="${toDo}" method="post">
+    <label for="title">제목:</label>
+    <input type="text" id="title" th:field="*{title}" />
+    <br />
+    <label for="content">내용:</label>
+    <input type="text" id="content" th:field="*{content}" />
+    <br />
+    <input type="hidden" th:field="*{completed}" />
+    <br />
+    <button type="submit">저장</button>
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>To-Do List</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+  <h1>To-Do List</h1>
+  <a th:href="@{/MVC/add}">ToDo 추가</a>
+  <table>
+    <thead>
+      <tr>
+        <th>제목</th>
+        <th>내용</th>
+        <th>완료여부</th>
+        <th>완료</th>
+        <th>편집/삭제</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="toDo : ${listToDo}">
+        <td th:text="${toDo.title}"></td>
+        <td th:text="${toDo.content}"></td>
+        <td th:text="${toDo.completed ? '완료됨' : '미완료'}"></td>
+        <td>
+          <a th:href="@{/MVC/complete/{id}(id=${toDo.id})}">완료</a>
+        </td>
+        <td>
+          <a th:href="@{/MVC/edit/{id}(id=${toDo.id})}">편집</a>
+          <a th:href="@{/MVC/delete/{id}(id=${toDo.id})}">삭제</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
